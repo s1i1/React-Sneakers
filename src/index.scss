@@ -19,6 +19,7 @@ body {
   border-radius: 20px;
 }
 
+//////////////HEADER/////////////////
 header {
   .header-block {
     display: flex;
@@ -71,5 +72,111 @@ header {
         }
       }
     }
+  }
+}
+
+//////////////MAIN/////////////////
+.content {
+  margin: 39px 0 0 0;
+  padding: 0 60px;
+
+  //////////////TITLE/////////////////
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+  }
+
+  &__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f3f3f3;
+    border-radius: 10px;
+    width: 250px;
+    height: 45px;
+    box-sizing: border-box;
+  }
+}
+.search {
+  &__icon {
+    padding: 0px 13px 0px 0px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+  }
+}
+
+//////////////CARDS/////////////////
+.cards {
+  display: flex;
+  padding: 40px 0 40px 0;
+
+  &__item {
+    max-width: 210px;
+    padding: 0 30px;
+    margin: 0 40px 40px 0;
+    border: 1px solid #f3f3f3;
+    border-radius: 40px;
+
+    &:hover {
+      border: 1px solid #f8f8f8;
+      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 40px;
+    }
+  }
+}
+.item {
+  &__liked {
+    position: absolute;
+    padding: 30px 0 0 0;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__product {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+  }
+
+  &__desc {
+    padding: 14px 0;
+    font-weight: 400;
+    line-height: 17px;
+    color: #000000;
+  }
+
+  &__price {
+  }
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 34px 0;
+  &__block {
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #bdbdbd;
+    padding: 0 0 2px 0;
+  }
+
+  &__value {
+  }
+
+  &__check {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
   }
 }
