@@ -1,9 +1,10 @@
 import React from 'react'
 import Card from './Card';
+import styles from "./ContentCards.module.scss";
 
 const ContentCards = (props) => {
     return (
-        <div className="content__cards cards">
+        <div className={styles.cards}>
             {props.productData.map((item, index) => {
                 return (<Card key={index}
                     product={item.product}

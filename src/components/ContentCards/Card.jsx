@@ -1,27 +1,28 @@
 import React from "react";
+import styles from "./ContentCards.module.scss";
 
 const Card = (props) => {
     return (
-        <div className="cards__item item">
-            <button className="item__liked">
+        <div className={styles.cards__item}>
+            <button className={styles.item__liked}>
                 <img src="img/main/cards/not_liked.png" alt="unlike" />
             </button>
-            <div className="item__product">
+            <div className={styles.item__product}>
                 <img width={'133px'} height={'112px'} src={props.product} alt="product" />
             </div>
-            <p className="item__desc">
+            <p className={styles.item__desc}>
                 {props.desc}
             </p>
-            <div className="item__price price">
-                <div className="price__block">
-                    <p className="price__title">
+            <div className={styles.price}>
+                <div>
+                    <p className={styles.price__title}>
                         Цена:
                     </p>
-                    <strong className="price__value">
+                    <strong>
                         {props.price} руб.
                     </strong>
                 </div>
-                <button className="price__check">
+                <button className={styles.price__check}>
                     <img src="img/main/cards/not_checked.svg" alt="not_checked" />
                 </button>
             </div>
