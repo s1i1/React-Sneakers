@@ -56,10 +56,10 @@ header {
 
       .basket__icon {
         display: flex;
-        cursor: pointer;
 
         img {
           padding: 0 15px 0 0;
+          cursor: pointer;
         }
 
         p {
@@ -221,7 +221,6 @@ header {
     z-index: 15;
     background: #fff;
     padding: 0 30px;
-    overflow-y: scroll;
   }
 
   &__title {
@@ -284,7 +283,6 @@ header {
     &_item {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 59px;
       width: 285px;
       border: 1px solid #f3f3f3;
