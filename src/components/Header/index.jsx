@@ -1,18 +1,19 @@
-import React from 'react'
+import React from 'react';
+import styles from './Header.module.scss';
 
 const Header = () => {
     return (
-        <div className="header-block">
-            <div className="logo-block">
+        <div className={styles.header}>
+            <div className={styles.logo}>
                 <img width={'40px'} height={'40px'} src="img/header/logo.png" alr="logo" />
                 <div>
                     <h3>REACT SNEAKERS</h3>
                     <p>Магазин лучших кроссовок</p>
                 </div>
             </div>
-            <div className="profile-block">
+            <div className={styles.profile}>
                 <ul>
-                    <li className="basket__icon">
+                    <li className={styles.basket}>
                         <img width={'18px'} height={'18px'} src="/img/header/basket_icon.svg" alr="basket_icon" />
                         <p>1205 руб.</p>
                     </li>
