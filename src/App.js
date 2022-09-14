@@ -17,7 +17,7 @@ function App() {
                 <p>1205 руб.</p>
               </li>
               <li>
-                <img width={'12px'} height={'19px'} src="/img/header/like_icon.svg" alr="like_icon" />
+                <img width={'21px'} height={'19px'} src="/img/header/like_icon.svg" alr="like_icon" />
               </li>
               <li>
                 <img width={'20px'} height={'20px'} src="/img/header/profile_icon.svg" alr="profile_icon" />
