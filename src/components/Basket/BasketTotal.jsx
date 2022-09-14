@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './Basket.module.scss';
 
 const BasketTotal = (props) => {
 
@@ -27,20 +28,20 @@ const BasketTotal = (props) => {
     sumValue();
 
     return (
-        <div className="basket__total total">
-            <div className="total__item">
-                <p className="total__item_text">Итого: </p>
-                <div className="total__item_line">
+        <div className='total'>
+            <div className={styles.total__item}>
+                <p className={styles.total__item_text}>Итого: </p>
+                <div className={styles.total__item_line}>
                     <span></span>
                 </div>
-                <strong className="total__item_cost">{total} руб.</strong>
+                <strong>{total} руб.</strong>
             </div>
-            <div className="total__item">
-                <p className="total__item_text">Налог 5%: </p>
-                <div className="total__item_line">
+            <div className={styles.total__item}>
+                <p className={styles.total__item_text}>Налог 5%: </p>
+                <div className={styles.total__item_line}>
                     <span></span>
                 </div>
-                <strong className="total__item_cost">{tax} руб. </strong>
+                <strong>{tax} руб.</strong>
             </div>
         </div>
     )
