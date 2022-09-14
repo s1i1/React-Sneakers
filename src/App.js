@@ -12,7 +12,7 @@ function App() {
           </div>
           <div className="profile-block">
             <ul>
-              <li className="basket">
+              <li className="basket__icon">
                 <img width={'18px'} height={'18px'} src="/img/header/basket_icon.svg" alr="basket_icon" />
                 <p>1205 руб.</p>
               </li>
