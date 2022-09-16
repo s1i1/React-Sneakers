@@ -1,38 +1,19 @@
+import React from "react";
 import Header from "./components/Header";
 import Basket from "./components/Basket";
 import ContentTop from "./components/ContentTop";
 import ContentCards from "./components/ContentCards";
 
-const productData = [
-  {
-    product: "/img/main/cards/product.jpg",
-    desc: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: "12 999",
-  },
-  {
-    product: "/img/main/cards/product2.jpg",
-    desc: "Мужские Кроссовки Nike Air Max 270",
-    price: "12 999",
-  },
-  {
-    product: "/img/main/cards/product3.jpg",
-    desc: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: "8 499",
-  },
-  {
-    product: "/img/main/cards/product3.jpg",
-    desc: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: "8 499",
-  },
-  {
-    product: "/img/main/cards/product3.jpg",
-    desc: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: "8 499",
-  },
-];
-
-
 function App() {
+  const [productData, setProductData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
+      .then(resp => resp.json())
+      .then(data => setProductData(data));
+  }, []);
+
+
   return (
     <div className="wrapper">
       <Basket productData={productData} />
