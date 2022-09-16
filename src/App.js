@@ -3,10 +3,13 @@ import Header from "./components/Header";
 import Basket from "./components/Basket";
 import ContentTop from "./components/ContentTop";
 import ContentCards from "./components/ContentCards";
+import setOverflow from "./setOverflow";
 
 function App() {
   const [productData, setProductData] = React.useState([]);
   const [visibleBasket, setVisibleBasket] = React.useState(false);
+
+  setOverflow(visibleBasket);
 
   React.useEffect(() => {
     fetch("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
