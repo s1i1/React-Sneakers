@@ -28,7 +28,7 @@ const BasketTotal = (props) => {
     sumValue();
 
     return (
-        <div className='total'>
+        <div className={styles.total}>
             <div className={styles.total__item}>
                 <p className={styles.total__item_text}>Итого: </p>
                 <div className={styles.total__item_line}>
