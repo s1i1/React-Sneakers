@@ -5,10 +5,11 @@ import styles from './Basket.module.scss';
 
 const Basket = (props) => {
     return (
-        <div
-            style={{ display: 'none' }}
-        >
-            <div className={styles.basket__overlay}></div>
+        <div>
+            <div
+                className={styles.basket__overlay}
+                onClick={props.onClickOverlay}
+            ></div>
             <div className={styles.basket__container}>
                 <h3 className={styles.basket__title}>Корзина</h3>
                 <div className={styles.basket__cards}>

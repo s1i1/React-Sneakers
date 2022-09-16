@@ -6,6 +6,7 @@ import ContentCards from "./components/ContentCards";
 
 function App() {
   const [productData, setProductData] = React.useState([]);
+  const [visibleBasket, setVisibleBasket] = React.useState(false);
 
   React.useEffect(() => {
     fetch("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
@@ -13,12 +14,20 @@ function App() {
       .then(data => setProductData(data));
   }, []);
 
+  const handlerBasketClick = () => {
+    setVisibleBasket((prev) => !prev);
+  };
 
   return (
     <div className="wrapper">
-      <Basket productData={productData} />
+      {visibleBasket && <Basket
+        productData={productData}
+        onClickOverlay={handlerBasketClick}
+      />}
       <header>
-        <Header />
+        <Header
+          onClickBasket={handlerBasketClick}
+        />
       </header>
       <main>
         <div className="content">
