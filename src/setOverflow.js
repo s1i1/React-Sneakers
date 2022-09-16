@@ -11,7 +11,6 @@ const setOverflow = (state) => {
         let scrollWidth = div.offsetWidth - div.clientWidth;
 
         div.remove();
-        console.log(scrollWidth);
 
         body.style.overflow = 'hidden';
         body.style.marginRight = scrollWidth + 'px';
