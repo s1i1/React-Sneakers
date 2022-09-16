@@ -8,6 +8,7 @@ import setOverflow from "./setOverflow";
 function App() {
   const [productData, setProductData] = React.useState([]);
   const [visibleBasket, setVisibleBasket] = React.useState(false);
+  const [cardItems, setCardItems] = React.useState([]);
 
   setOverflow(visibleBasket);
 
@@ -21,10 +22,14 @@ function App() {
     setVisibleBasket((prev) => !prev);
   };
 
+  const onAddToCart = (obj) => {
+    setCardItems((prev) => [...prev, obj]);
+  };
+
   return (
     <div className="wrapper">
       {visibleBasket && <Basket
-        productData={productData}
+        items={cardItems}
         onClickOverlay={handlerBasketClick}
       />}
       <header>
@@ -35,7 +40,10 @@ function App() {
       <main>
         <div className="content">
           <ContentTop />
-          <ContentCards productData={productData} />
+          <ContentCards
+            productData={productData}
+            onPlus={(obj) => onAddToCart(obj)}
+          />
         </div>
       </main>
     </div>
