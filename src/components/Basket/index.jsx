@@ -3,17 +3,19 @@ import BasketCard from "./BasketCard";
 import BasketTotal from "./BasketTotal";
 import styles from './Basket.module.scss';
 
-const Basket = ({ onClickOverlay, items = [] }) => {
+const Basket = ({ onClickCloseOverlay, items = [] }) => {
     return (
         <div>
             <div
                 className={styles.basket__overlay}
-                onClick={onClickOverlay}
+                onClick={onClickCloseOverlay}
             ></div>
             <div className={styles.basket__container}>
                 <div className={styles.basket__title}>
                     <h3 className={styles.basket__title_text}>Корзина</h3>
-                    <button className={styles.basket__title_button}>
+                    <button
+                        onClick={onClickCloseOverlay}
+                        className={styles.basket__title_button}>
                         <img width={'25px'} height={'25px'}
                             src="/img/main/basket/delete_button.svg" alt="delete_button" />
                     </button>

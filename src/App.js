@@ -30,7 +30,7 @@ function App() {
     <div className="wrapper">
       {visibleBasket && <Basket
         items={cardItems}
-        onClickOverlay={handlerBasketClick}
+        onClickCloseOverlay={handlerBasketClick}
       />}
       <header>
         <Header
