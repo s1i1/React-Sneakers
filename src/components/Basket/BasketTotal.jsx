@@ -1,31 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './Basket.module.scss';
+import calculateTotal from './calculateTotal';
 
 const BasketTotal = (props) => {
+    const [total, setTotal] = React.useState(0);
+    const [tax, setTax] = React.useState(0);
 
-    let total = 0;
-    let tax = 0;
-
-    const sumValue = () => {
-        let sum = 0;
-        props.productData.map(item => {
-            sum += +item.price.replace(' ', '');
-        });
-
-        if (sum.toString().length > 4) {
-            total = sum
-                .toString()
-                .split('')
-                .map((item, index) => index === 1 ? item + ' ' : item)
-                .join('');
-            tax = Math.round(sum * 5 / 100);
-        } else {
-            total = sum;
-            tax = Math.round(sum * 5 / 100);
-        }
-
+    const calcSum = () => {
+        let objValue = calculateTotal(props.productData, total, tax);
+        setTotal(objValue.total);
+        setTax(objValue.tax);
     };
-    sumValue();
+
+    React.useEffect(() => {
+        calcSum();
+    }, [total, tax]);
 
     return (
         <div className={styles.total}>
