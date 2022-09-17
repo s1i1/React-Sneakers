@@ -3,14 +3,8 @@ import styles from './Basket.module.scss';
 import calculateTotal from './calculateTotal';
 
 const BasketTotal = ({ total, setTotal, tax, setTax, productData }) => {
-    const calcSum = () => {
-        let objValue = calculateTotal(productData, total, tax);
-        setTotal(objValue.total);
-        setTax(objValue.tax);
-    };
-
     React.useEffect(() => {
-        calcSum();
+        calculateTotal(productData, total, setTotal, tax, setTax);
     }, [total, tax]);
 
     return (

@@ -1,4 +1,4 @@
-const calculateTotal = (obj, total, tax) => {
+const calculateTotal = (obj, total, setTotal, tax, setTax) => {
     let sum = 0;
     obj.map(item => {
         sum += +item.price.replace(' ', '');
@@ -17,10 +17,9 @@ const calculateTotal = (obj, total, tax) => {
         total = sum;
         tax = Math.round(sum * 5 / 100).toString();
     }
-    return {
-        total: total,
-        tax: tax
-    };
+
+    setTotal(total);
+    setTax(tax);
 };
 
 export default calculateTotal;
