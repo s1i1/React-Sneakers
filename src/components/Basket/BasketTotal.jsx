@@ -2,12 +2,9 @@ import React from 'react'
 import styles from './Basket.module.scss';
 import calculateTotal from './calculateTotal';
 
-const BasketTotal = (props) => {
-    const [total, setTotal] = React.useState(0);
-    const [tax, setTax] = React.useState(0);
-
+const BasketTotal = ({ total, setTotal, tax, setTax, productData }) => {
     const calcSum = () => {
-        let objValue = calculateTotal(props.productData, total, tax);
+        let objValue = calculateTotal(productData, total, tax);
         setTotal(objValue.total);
         setTax(objValue.tax);
     };

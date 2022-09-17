@@ -9,6 +9,8 @@ function App() {
   const [productData, setProductData] = React.useState([]);
   const [visibleBasket, setVisibleBasket] = React.useState(false);
   const [cardItems, setCardItems] = React.useState([]);
+  const [total, setTotal] = React.useState(0);
+  const [tax, setTax] = React.useState(0);
 
   setOverflow(visibleBasket);
 
@@ -29,6 +31,10 @@ function App() {
   return (
     <div className="wrapper">
       {visibleBasket && <Basket
+        total={total}
+        setTotal={setTotal}
+        tax={tax}
+        setTax={setTax}
         items={cardItems}
         onClickCloseOverlay={handlerBasketClick}
       />}

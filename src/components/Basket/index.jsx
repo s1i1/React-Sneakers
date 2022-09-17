@@ -3,7 +3,7 @@ import BasketCard from "./BasketCard";
 import BasketTotal from "./BasketTotal";
 import styles from './Basket.module.scss';
 
-const Basket = ({ onClickCloseOverlay, items = [] }) => {
+const Basket = ({ total, setTotal, tax, setTax, onClickCloseOverlay, items = [] }) => {
     return (
         <div>
             <div
@@ -33,7 +33,12 @@ const Basket = ({ onClickCloseOverlay, items = [] }) => {
                             />)
                     })}
                 </div>
-                <BasketTotal productData={items} />
+                <BasketTotal
+                    total={total}
+                    setTotal={setTotal}
+                    tax={tax}
+                    setTax={setTax}
+                    productData={items} />
                 <div className={styles.basket__button}>
                     <div className={styles.basket__button_text}>
                         Оформить заказ
