@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.module.scss';
 
-const Header = (props) => {
+const Header = ({ total, onClickBasket }) => {
     return (
         <div className={styles.header}>
             <div className={styles.logo}>
@@ -13,9 +13,9 @@ const Header = (props) => {
             </div>
             <div className={styles.profile}>
                 <ul>
-                    <li onClick={props.onClickBasket} className={styles.basket}>
+                    <li onClick={onClickBasket} className={styles.basket}>
                         <img width={'18px'} height={'18px'} src="/img/header/basket_icon.svg" alr="basket_icon" />
-                        <p>1205 руб.</p>
+                        <p>{total} руб.</p>
                     </li>
                     <li>
                         <img width={'21px'} height={'19px'} src="/img/header/like_icon.svg" alr="like_icon" />

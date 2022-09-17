@@ -4,6 +4,7 @@ import Basket from "./components/Basket";
 import ContentTop from "./components/ContentTop";
 import ContentCards from "./components/ContentCards";
 import setOverflow from "./setOverflow";
+import calculateTotal from "./components/Basket/calculateTotal";
 
 function App() {
   const [productData, setProductData] = React.useState([]);
@@ -19,6 +20,10 @@ function App() {
       .then(resp => resp.json())
       .then(data => setProductData(data));
   }, []);
+
+  React.useEffect(() => {
+    calculateTotal(cardItems, total, setTotal, tax, setTax);
+  }, [cardItems])
 
   const handlerBasketClick = () => {
     setVisibleBasket((prev) => !prev);
@@ -40,6 +45,7 @@ function App() {
       />}
       <header>
         <Header
+          total={total}
           onClickBasket={handlerBasketClick}
         />
       </header>
