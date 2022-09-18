@@ -18,7 +18,9 @@ function App() {
 
   React.useEffect(() => {
     axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
-      .then(resp => setProductData(resp.data))
+      .then(resp => setProductData(resp.data));
+    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket")
+      .then(resp => setCardItems(resp.data));
   }, []);
 
   React.useEffect(() => {
@@ -31,6 +33,7 @@ function App() {
 
   const onAddToCart = (obj) => {
     setCardItems((prev) => [...prev, obj]);
+    axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket", obj);
   };
 
   return (
