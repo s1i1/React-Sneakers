@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 import Header from "./components/Header";
 import Basket from "./components/Basket";
 import ContentTop from "./components/ContentTop";
@@ -16,9 +17,8 @@ function App() {
   setOverflow(visibleBasket);
 
   React.useEffect(() => {
-    fetch("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
-      .then(resp => resp.json())
-      .then(data => setProductData(data));
+    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
+      .then(resp => setProductData(resp.data))
   }, []);
 
   React.useEffect(() => {
