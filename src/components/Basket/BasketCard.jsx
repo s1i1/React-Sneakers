@@ -1,19 +1,19 @@
 import React from 'react';
 import styles from './Basket.module.scss';
 
-const BasketCard = (props) => {
+const BasketCard = ({ product, desc, price }) => {
     return (
         <div className={styles.selected__product_item}>
             <div>
-                <img width={'70px'} height={'70px'} src={props.product} alt="product" />
+                <img width={'70px'} height={'70px'} src={product} alt="product" />
             </div>
             <div className={styles.selected__product_desc}>
                 <div className={styles.selected__product_container}>
                     <div className={styles.selected__product_title}>
-                        {props.desc}
+                        {desc}
                     </div>
                     <strong>
-                        {props.price} руб.
+                        {price} руб.
                     </strong>
                 </div>
                 <button className={styles.selected__product_delete}>
