@@ -4,6 +4,7 @@ import styles from "./ContentCards.module.scss";
 const Card = ({ isAddToBasket, product, desc, price, onPlus }) => {
 
     const handlerAddClick = () => {
+        if (isAddToBasket) return null;
         onPlus({ product, desc, price })
     };
 
