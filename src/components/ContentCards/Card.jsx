@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./ContentCards.module.scss";
 
-const Card = ({ product, desc, price, onPlus }) => {
-    const [addProduct, setAddProduct] = React.useState(false);
+const Card = ({ isAddToBasket, product, desc, price, onPlus }) => {
 
     const handlerAddClick = () => {
         onPlus({ product, desc, price })
-        setAddProduct((prev) => !prev);
     };
 
     return (
@@ -32,9 +30,10 @@ const Card = ({ product, desc, price, onPlus }) => {
                 <button
                     onClick={handlerAddClick}
                     className={styles.price__check}>
-                    <img src={addProduct ?
-                        "img/main/cards/check.svg" :
-                        "img/main/cards/not_checked.svg"
+                    <img src={
+                        isAddToBasket ?
+                            "img/main/cards/check.svg" :
+                            "img/main/cards/not_checked.svg"
                     } alt="not_checked" />
                 </button>
             </div>

@@ -56,6 +56,7 @@ function App() {
         <div className="content">
           <ContentTop />
           <ContentCards
+            cardItems={cardItems}
             productData={productData}
             onPlus={(obj) => onAddToCart(obj)}
           />
