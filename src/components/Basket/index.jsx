@@ -3,7 +3,7 @@ import BasketCard from "./BasketCard";
 import BasketTotal from "./BasketTotal";
 import styles from './Basket.module.scss';
 
-const Basket = ({ total, setTotal, tax, setTax, onClickCloseOverlay, items = [] }) => {
+const Basket = ({ total, setTotal, tax, setTax, onClickCloseOverlay, onClickDeleteCard, items = [] }) => {
     return (
         <div>
             <div
@@ -30,6 +30,7 @@ const Basket = ({ total, setTotal, tax, setTax, onClickCloseOverlay, items = [] 
                                 product={item.product}
                                 desc={item.desc}
                                 price={item.price}
+                                onClickDeleteCard={onClickDeleteCard}
                             />)
                     })}
                 </div>

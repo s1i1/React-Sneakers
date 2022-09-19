@@ -31,6 +31,15 @@ function App() {
     setVisibleBasket((prev) => !prev);
   };
 
+  const handlerClickDeleteCard = (path) => {
+    cardItems.map((item, index) => {
+      if (item.product.includes(path)) {
+        axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket/${item.id}`);
+        setCardItems(cardItems.filter((arr, i) => cardItems[i] !== cardItems[index]));
+      }
+    });
+  }
+
   const onAddToCart = (obj) => {
     setCardItems((prev) => [...prev, obj]);
     axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket", obj);
@@ -45,6 +54,7 @@ function App() {
         setTax={setTax}
         items={cardItems}
         onClickCloseOverlay={handlerBasketClick}
+        onClickDeleteCard={handlerClickDeleteCard}
       />}
       <header>
         <Header

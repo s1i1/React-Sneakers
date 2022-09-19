@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './Basket.module.scss';
 
-const BasketCard = ({ product, desc, price }) => {
+const BasketCard = ({ product, desc, price, onClickDeleteCard }) => {
+
+    const handlerClickDeleteCard = () => {
+        onClickDeleteCard(product);
+    }
+
     return (
         <div className={styles.selected__product_item}>
             <div>
@@ -16,7 +21,9 @@ const BasketCard = ({ product, desc, price }) => {
                         {price} руб.
                     </strong>
                 </div>
-                <button className={styles.selected__product_delete}>
+                <button
+                    className={styles.selected__product_delete}
+                    onClick={handlerClickDeleteCard}>
                     <img src="/img/main/basket/delete_button.svg" alt="delete_button" />
                 </button>
             </div>
