@@ -1,11 +1,14 @@
 import React from "react";
 import styles from "./ContentCards.module.scss";
 
-const Card = ({ isAddToBasket, product, desc, price, onPlus }) => {
+const Card = ({ isAddToBasket, product, desc, price, onPlus, onDelete }) => {
 
     const handlerAddClick = () => {
-        if (isAddToBasket) return null;
-        onPlus({ product, desc, price })
+        if (isAddToBasket) {
+            onDelete(product);
+        } else {
+            onPlus({ product, desc, price })
+        }
     };
 
     return (

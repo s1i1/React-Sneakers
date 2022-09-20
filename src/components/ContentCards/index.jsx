@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card';
 import styles from "./ContentCards.module.scss";
 
-const ContentCards = ({ cardItems, productData, onPlus }) => {
+const ContentCards = ({ cardItems, productData, onPlus, onDelete }) => {
     return (
         <div className={styles.cards}>
             {productData.map((item, index) => {
@@ -21,6 +21,7 @@ const ContentCards = ({ cardItems, productData, onPlus }) => {
                         desc={item.desc}
                         price={item.price}
                         onPlus={onPlus}
+                        onDelete={onDelete}
                     />);
             })}
         </div>

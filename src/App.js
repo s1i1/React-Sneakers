@@ -89,6 +89,7 @@ function App() {
             cardItems={cardItems}
             productData={searchItems}
             onPlus={(obj) => onAddToCart(obj)}
+            onDelete={handlerClickDeleteCard}
           />
         </div>
       </main>
