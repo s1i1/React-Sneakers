@@ -9,6 +9,7 @@ import calculateTotal from "./components/Basket/calculateTotal";
 
 function App() {
   const [productData, setProductData] = React.useState([]);
+  const [searchItems, setSearchItems] = React.useState([]);
   const [visibleBasket, setVisibleBasket] = React.useState(false);
   const [cardItems, setCardItems] = React.useState([]);
   const [total, setTotal] = React.useState(0);
@@ -17,8 +18,13 @@ function App() {
   setOverflow(visibleBasket);
 
   React.useEffect(() => {
-    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items")
-      .then(resp => setProductData(resp.data));
+    async function getData() {
+      let resp = await axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items");
+      setProductData(resp.data);
+      setSearchItems(resp.data);
+    }
+
+    getData();
     axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket")
       .then(resp => setCardItems(resp.data));
   }, []);
@@ -45,6 +51,11 @@ function App() {
     axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket", obj);
   };
 
+  const onChangeSearch = (e) => {
+    setSearchItems(productData.filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase()))
+    );
+  };
+
   return (
     <div className="wrapper">
       {visibleBasket && <Basket
@@ -64,10 +75,12 @@ function App() {
       </header>
       <main>
         <div className="content">
-          <ContentTop />
+          <ContentTop
+            onChangeSearch={onChangeSearch}
+          />
           <ContentCards
             cardItems={cardItems}
-            productData={productData}
+            productData={searchItems}
             onPlus={(obj) => onAddToCart(obj)}
           />
         </div>
