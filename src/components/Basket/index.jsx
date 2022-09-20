@@ -23,10 +23,10 @@ const Basket = ({ total, setTotal, tax, setTax, onClickCloseOverlay, onClickDele
                     </button>
                 </div>
                 <div className={styles.basket__cards}>
-                    {items.map((item, index) => {
+                    {items.map((item) => {
                         return (
                             <BasketCard
-                                key={index}
+                                key={item.product}
                                 product={item.product}
                                 desc={item.desc}
                                 price={item.price}
