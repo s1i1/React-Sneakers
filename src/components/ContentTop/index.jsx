@@ -13,13 +13,13 @@ const ContentTop = ({ handlerClickSearchDelete, onChangeSearch, searchValue }) =
                     onChange={onChangeSearch}
                     value={searchValue}
                     placeholder="Поиск..." />
-                <button
+                {searchValue && <button
                     className={styles.delete__button}
                     onClick={handlerClickSearchDelete}
                 >
                     <img width={'20px'} height={'20px'}
                         src='./img/main/basket/delete_button.svg' alt='delete_button' />
-                </button>
+                </button>}
             </div>
         </div>
     )
