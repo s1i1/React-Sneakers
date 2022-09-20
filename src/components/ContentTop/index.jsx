@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ContentTop.module.scss';
 
-const ContentTop = ({ onChangeSearch }) => {
+const ContentTop = ({ handlerClickSearchDelete, onChangeSearch, searchValue }) => {
     return (
         <div className={styles.top}>
             <h1>Все кроссовки</h1>
@@ -11,8 +11,12 @@ const ContentTop = ({ onChangeSearch }) => {
                 </div>
                 <input
                     onChange={onChangeSearch}
+                    value={searchValue}
                     placeholder="Поиск..." />
-                <button className={styles.delete__button}>
+                <button
+                    className={styles.delete__button}
+                    onClick={handlerClickSearchDelete}
+                >
                     <img width={'20px'} height={'20px'}
                         src='./img/main/basket/delete_button.svg' alt='delete_button' />
                 </button>

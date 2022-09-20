@@ -10,6 +10,7 @@ import calculateTotal from "./components/Basket/calculateTotal";
 function App() {
   const [productData, setProductData] = React.useState([]);
   const [searchItems, setSearchItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
   const [visibleBasket, setVisibleBasket] = React.useState(false);
   const [cardItems, setCardItems] = React.useState([]);
   const [total, setTotal] = React.useState(0);
@@ -45,6 +46,10 @@ function App() {
       }
     });
   }
+  const handlerClickSearchDelete = () => {
+    setSearchValue('');
+    setSearchItems(productData);
+  };
 
   const onAddToCart = (obj) => {
     setCardItems((prev) => [...prev, obj]);
@@ -52,8 +57,8 @@ function App() {
   };
 
   const onChangeSearch = (e) => {
-    setSearchItems(productData.filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase()))
-    );
+    setSearchValue(e.target.value);
+    setSearchItems(productData.filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase())));
   };
 
   return (
@@ -76,7 +81,9 @@ function App() {
       <main>
         <div className="content">
           <ContentTop
+            handlerClickSearchDelete={handlerClickSearchDelete}
             onChangeSearch={onChangeSearch}
+            searchValue={searchValue}
           />
           <ContentCards
             cardItems={cardItems}
