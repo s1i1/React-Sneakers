@@ -12,7 +12,6 @@ const Basket = ({
     onClickDeleteCard,
     items = []
 }) => {
-    console.log(items.length === 0);
     return (
         <div>
             <div
