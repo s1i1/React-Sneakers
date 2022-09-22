@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
 const Header = ({ total, onClickBasket }) => {
     return (
         <div className={styles.header}>
-            <div className={styles.logo}>
+            <Link to="/" className={styles.logo}>
                 <img width={'40px'} height={'40px'} src="img/header/logo.png" alr="logo" />
                 <div>
                     <h3>REACT SNEAKERS</h3>
                     <p>Магазин лучших кроссовок</p>
                 </div>
-            </div>
+            </Link>
             <div className={styles.profile}>
                 <ul>
                     <li onClick={onClickBasket} className={styles.basket}>
