@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Basket.module.scss';
 
-const BasketEmpty = () => {
+const BasketEmpty = ({ onClickCloseOverlay }) => {
     return (
         <div className={styles.empty}>
             <div className={styles.empty__image}>
@@ -16,7 +16,10 @@ const BasketEmpty = () => {
                     <br />кроссовок, чтобы сделать заказ.
                 </p>
             </div>
-            <button className={styles.empty__button}>
+            <button
+                className={styles.empty__button}
+                onClick={onClickCloseOverlay}
+            >
                 <div>
                     <img width={'14px'} height={'12px'} src='./img/main/basket/arrow-left.svg' alt='arrow' />
                     <p>Вернуться назад</p>

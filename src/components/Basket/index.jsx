@@ -31,7 +31,7 @@ const Basket = ({
                     </button>
                 </div>
                 {items.length == 0 ?
-                    <BasketEmpty />
+                    <BasketEmpty onClickCloseOverlay={onClickCloseOverlay} />
                     :
                     <BasketWithProduct
                         total={total}
