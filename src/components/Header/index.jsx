@@ -19,7 +19,9 @@ const Header = ({ total, onClickBasket }) => {
                         <p>{total} руб.</p>
                     </li>
                     <li>
-                        <img width={'21px'} height={'19px'} src="/img/header/like_icon.svg" alr="like_icon" />
+                        <Link to="/favorite">
+                            <img width={'21px'} height={'19px'} src="/img/header/like_icon.svg" alr="like_icon" />
+                        </Link>
                     </li>
                     <li>
                         <img width={'20px'} height={'20px'} src="/img/header/profile_icon.svg" alr="profile_icon" />
