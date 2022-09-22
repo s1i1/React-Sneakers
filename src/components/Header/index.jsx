@@ -24,7 +24,9 @@ const Header = ({ total, onClickBasket }) => {
                         </Link>
                     </li>
                     <li>
-                        <img width={'20px'} height={'20px'} src="/img/header/profile_icon.svg" alr="profile_icon" />
+                        <Link to="/purchases">
+                            <img width={'20px'} height={'20px'} src="/img/header/profile_icon.svg" alr="profile_icon" />
+                        </Link>
                     </li>
                 </ul>
             </div>

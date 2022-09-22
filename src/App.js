@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import axios from "axios";
 import HomePage from './pages/HomePage';
 import FavoritePage from './pages/FavoritePage';
+import PurchasesPage from './pages/PurchasesPage';
 import Header from "./components/Header";
 import Basket from "./components/Basket";
 import setOverflow from "./setOverflow";
@@ -94,6 +95,7 @@ function App() {
               />
             } />
             <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/purchases" element={<PurchasesPage />} />
           </Routes>
         </div>
       </main>
