@@ -1,9 +1,10 @@
 import React from "react";
-import axios from "axios"
+import { Routes, Route } from 'react-router-dom'
+import axios from "axios";
+import HomePage from './pages/HomePage';
+import FavoritePage from './pages/FavoritePage';
 import Header from "./components/Header";
 import Basket from "./components/Basket";
-import ContentTop from "./components/ContentTop";
-import ContentCards from "./components/ContentCards";
 import setOverflow from "./setOverflow";
 import calculateTotal from "./components/Basket/calculateTotal";
 
@@ -80,17 +81,20 @@ function App() {
       </header>
       <main>
         <div className="content">
-          <ContentTop
-            handlerClickSearchDelete={handlerClickSearchDelete}
-            onChangeSearch={onChangeSearch}
-            searchValue={searchValue}
-          />
-          <ContentCards
-            cardItems={cardItems}
-            productData={searchItems}
-            onPlus={(obj) => onAddToCart(obj)}
-            onDelete={handlerClickDeleteCard}
-          />
+          <Routes>
+            <Route path="/" element={
+              <HomePage
+                handlerClickSearchDelete={handlerClickSearchDelete}
+                onChangeSearch={onChangeSearch}
+                searchValue={searchValue}
+                cardItems={cardItems}
+                productData={searchItems}
+                onPlus={(obj) => onAddToCart(obj)}
+                onDelete={handlerClickDeleteCard}
+              />
+            } />
+            <Route path="/favorite" element={<FavoritePage />} />
+          </Routes>
         </div>
       </main>
     </div>
