@@ -5,7 +5,7 @@ import styles from "./ContentCards.module.scss";
 const ContentCards = ({ cardItems, productData, onPlus, onDelete }) => {
     return (
         <div className={styles.cards}>
-            {productData.map((item, index) => {
+            {productData.map((item) => {
                 let isAddToBasket = false;
 
                 cardItems.map(obj => {
@@ -15,7 +15,7 @@ const ContentCards = ({ cardItems, productData, onPlus, onDelete }) => {
                 });
 
                 return (
-                    <Card key={index}
+                    <Card key={item.product}
                         isAddToBasket={isAddToBasket}
                         product={item.product}
                         desc={item.desc}
