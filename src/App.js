@@ -15,6 +15,7 @@ function App() {
   const [searchValue, setSearchValue] = React.useState('');
   const [visibleBasket, setVisibleBasket] = React.useState(false);
   const [cardItems, setCardItems] = React.useState([]);
+  const [favoriteItems, setFavoriteItems] = React.useState([]);
   const [total, setTotal] = React.useState(0);
   const [tax, setTax] = React.useState(0);
 

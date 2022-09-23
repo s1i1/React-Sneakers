@@ -3,7 +3,6 @@ import styles from './Favorite.module.scss';
 import ContentCards from '../ContentCards';
 
 const Favorite = ({ cardItems, productData, onPlus, onDelete }) => {
-    console.log(productData);
     return (
         <>
             <div className={styles.header}>

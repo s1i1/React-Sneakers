@@ -1,14 +1,16 @@
 import React from 'react';
-import Favorite from '../components/Favorite/Favorite';
+import FavoriteEmpty from '../components/Favorite/FavoriteEmpty';
+import Favorite from '../components/Favorite/index';
 
 const FavoritePage = ({ cardItems, productData, onPlus, onDelete }) => {
     return (
-        <Favorite
-            cardItems={cardItems}
-            productData={productData}
-            onPlus={(obj) => onPlus(obj)}
-            onDelete={onDelete}
-        />
+        <FavoriteEmpty />
+        // <Favorite
+        //     cardItems={cardItems}
+        //     productData={productData}
+        //     onPlus={(obj) => onPlus(obj)}
+        //     onDelete={onDelete}
+        // />
     )
 }
 
