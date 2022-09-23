@@ -11,6 +11,7 @@ import calculateTotal from "./components/Basket/calculateTotal";
 
 function App() {
   const [productData, setProductData] = React.useState([]);
+  const [favoriteData, setFavoriteData] = React.useState([]);
   const [searchItems, setSearchItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
   const [visibleBasket, setVisibleBasket] = React.useState(false);
@@ -28,12 +29,18 @@ function App() {
       setSearchItems(resp.data);
     }
 
+    async function getFavoriteData() {
+      let resp = await axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite");
+
+      setFavoriteData(resp.data);
+      setFavoriteItems(resp.data);
+    }
+
     getData();
+    getFavoriteData();
+
     axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket")
       .then(resp => setCardItems(resp.data));
-
-    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite")
-      .then(resp => setFavoriteItems(resp.data));
   }, []);
 
   React.useEffect(() => {
@@ -118,10 +125,13 @@ function App() {
             } />
             <Route path="/favorite" element={
               <FavoritePage
+                cardItems={cardItems}
                 favoriteItems={favoriteItems}
-                productData={productData}
+                productData={favoriteData}
                 onPlus={(obj) => onAddToCart(obj)}
                 onDelete={handlerClickDeleteCard}
+                onDeleteFavorite={handlerClickDeleteFavorite}
+                onFavorite={(obj) => onAddToFavorite(obj)}
               />
             } />
             <Route path="/purchases" element={<PurchasesPage />} />

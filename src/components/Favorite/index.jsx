@@ -2,7 +2,15 @@ import React from 'react';
 import styles from './Favorite.module.scss';
 import ContentCards from '../ContentCards';
 
-const Favorite = ({ cardItems, productData, onPlus, onDelete }) => {
+const Favorite = ({
+    cardItems,
+    favoriteItems,
+    productData,
+    onPlus,
+    onDelete,
+    onDeleteFavorite,
+    onFavorite
+}) => {
     return (
         <>
             <div className={styles.header}>
@@ -15,8 +23,11 @@ const Favorite = ({ cardItems, productData, onPlus, onDelete }) => {
                 <ContentCards
                     cardItems={cardItems}
                     productData={productData}
+                    favoriteItems={favoriteItems}
                     onPlus={onPlus}
                     onDelete={onDelete}
+                    onDeleteFavorite={onDeleteFavorite}
+                    onFavorite={onFavorite}
                 />
             </div>
         </>
