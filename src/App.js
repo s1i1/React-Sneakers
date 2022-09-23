@@ -94,7 +94,14 @@ function App() {
                 onDelete={handlerClickDeleteCard}
               />
             } />
-            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/favorite" element={
+              <FavoritePage
+                cardItems={cardItems}
+                productData={productData}
+                onPlus={(obj) => onAddToCart(obj)}
+                onDelete={handlerClickDeleteCard}
+              />
+            } />
             <Route path="/purchases" element={<PurchasesPage />} />
           </Routes>
         </div>
