@@ -8,9 +8,13 @@ const HomePage = ({
     searchValue,
     cardItems,
     productData,
+    favoriteItems,
     onPlus,
-    onDelete
+    onDelete,
+    onDeleteFavorite,
+    onFavorite
 }) => {
+
     return (
         <>
             <ContentTop
@@ -21,8 +25,11 @@ const HomePage = ({
             <ContentCards
                 cardItems={cardItems}
                 productData={productData}
+                favoriteItems={favoriteItems}
                 onPlus={onPlus}
                 onDelete={onDelete}
+                onDeleteFavorite={onDeleteFavorite}
+                onFavorite={onFavorite}
             />
         </>
     )

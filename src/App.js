@@ -31,6 +31,9 @@ function App() {
     getData();
     axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket")
       .then(resp => setCardItems(resp.data));
+
+    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite")
+      .then(resp => setFavoriteItems(resp.data));
   }, []);
 
   React.useEffect(() => {
@@ -49,6 +52,16 @@ function App() {
       }
     });
   }
+
+  const handlerClickDeleteFavorite = (path) => {
+    favoriteItems.map((item, index) => {
+      if (item.product.includes(path)) {
+        axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite/${item.id}`);
+        setFavoriteItems(favoriteItems.filter((arr, i) => cardItems[i] !== cardItems[index]));
+      }
+    });
+  }
+
   const handlerClickSearchDelete = () => {
     setSearchValue('');
     setSearchItems(productData);
@@ -57,6 +70,11 @@ function App() {
   const onAddToCart = (obj) => {
     setCardItems((prev) => [...prev, obj]);
     axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket", obj);
+  };
+
+  const onAddToFavorite = (obj) => {
+    setFavoriteItems((prev) => [...prev, obj]);
+    axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite", obj);
   };
 
   const onChangeSearch = (e) => {
@@ -91,13 +109,16 @@ function App() {
                 searchValue={searchValue}
                 cardItems={cardItems}
                 productData={searchItems}
+                favoriteItems={favoriteItems}
                 onPlus={(obj) => onAddToCart(obj)}
                 onDelete={handlerClickDeleteCard}
+                onDeleteFavorite={handlerClickDeleteFavorite}
+                onFavorite={(obj) => onAddToFavorite(obj)}
               />
             } />
             <Route path="/favorite" element={
               <FavoritePage
-                cardItems={cardItems}
+                favoriteItems={favoriteItems}
                 productData={productData}
                 onPlus={(obj) => onAddToCart(obj)}
                 onDelete={handlerClickDeleteCard}
