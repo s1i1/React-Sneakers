@@ -11,16 +11,19 @@ const FavoritePage = ({
     onDeleteFavorite,
     onFavorite
 }) => {
+    console.log(productData);
     return (
-        <Favorite
-            cardItems={cardItems}
-            favoriteItems={favoriteItems}
-            productData={productData}
-            onPlus={onPlus}
-            onDelete={onDelete}
-            onDeleteFavorite={onDeleteFavorite}
-            onFavorite={onFavorite}
-        />
+        productData.length == 0 ?
+            <FavoriteEmpty /> :
+            <Favorite
+                cardItems={cardItems}
+                favoriteItems={favoriteItems}
+                productData={productData}
+                onPlus={onPlus}
+                onDelete={onDelete}
+                onDeleteFavorite={onDeleteFavorite}
+                onFavorite={onFavorite}
+            />
     )
 }
 
