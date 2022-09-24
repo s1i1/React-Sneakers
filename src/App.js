@@ -43,6 +43,9 @@ function App() {
 
     axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket")
       .then(resp => setCardItems(resp.data));
+
+    axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/purchases")
+      .then(resp => setPurchasesHistory(resp.data));
   }, []);
 
   React.useEffect(() => {
@@ -110,7 +113,18 @@ function App() {
     let jsonData = new Set(purchasesData.map(item => JSON.stringify(item)));
     let arrData = Array.from(jsonData).map(item => JSON.parse(item));
 
-    setPurchasesHistory(arrData)
+    if (arrData.length > 0) {
+      setPurchasesHistory(arrData);
+
+      arrData.forEach(item => {
+        try {
+          console.log('Отправляется obj в purchases');
+          axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/purchases", item);
+        } catch (err) {
+          alert('purchases не отправлен')
+        }
+      });
+    }
   }, [purchasesData]);
 
   const onChangeSearch = (e) => {
