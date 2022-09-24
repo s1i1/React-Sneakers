@@ -51,22 +51,37 @@ function App() {
     setVisibleBasket((prev) => !prev);
   };
 
-  const handlerClickDeleteCard = (path) => {
-    cardItems.map((item, index) => {
-      if (item.product.includes(path)) {
-        axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket/${item.id}`);
-        setCardItems(cardItems.filter((arr, i) => cardItems[i] !== cardItems[index]));
-      }
-    });
+  const handlerClickDeleteCard = async (path) => {
+    try {
+      let { data } = await axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket");
+
+      data.map((item, index) => {
+        if (item.product.includes(path)) {
+          axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/basket/${item.id}`);
+          setCardItems(cardItems.filter((arr, i) => cardItems[i] !== cardItems[index]));
+        }
+      });
+    } catch (err) {
+      alert('Не удалось получить basket')
+    }
   }
 
-  const handlerClickDeleteFavorite = (path) => {
-    favoriteItems.map((item, index) => {
-      if (item.product.includes(path)) {
-        axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite/${item.id}`);
-        setFavoriteItems(favoriteItems.filter((arr, i) => favoriteItems[i] !== favoriteItems[index]));
-      }
-    });
+  const handlerClickDeleteFavorite = async (path) => {
+    try {
+      let { data } = await axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite");
+
+      data.map((item, index) => {
+        if (item.product.includes(path)) {
+          axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite/${item.id}`);
+
+          setFavoriteItems(favoriteItems.filter((arr, i) => favoriteItems[i] !== favoriteItems[index]));
+
+          setFavoriteData(favoriteData.filter((arr, i) => favoriteData[i] !== favoriteData[index]));
+        }
+      });
+    } catch (err) {
+      alert('Не удалось получить favorite')
+    }
   }
 
   const handlerClickSearchDelete = () => {
@@ -81,6 +96,7 @@ function App() {
 
   const onAddToFavorite = (obj) => {
     setFavoriteItems((prev) => [...prev, obj]);
+    setFavoriteData((prev) => [...prev, obj]);
     axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite", obj);
   };
 
