@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Favorite.module.scss';
 import ContentCards from '../ContentCards';
 
@@ -14,9 +15,9 @@ const Favorite = ({
     return (
         <>
             <div className={styles.header}>
-                <div className='image'>
+                <Link to="/" className={styles.header__image}>
                     <img src='./img/main/favorite/get-back-arrow.svg' alt='get-back-arrow' />
-                </div>
+                </Link>
                 <h1>Мои закладки</h1>
             </div>
             <div className='content__cards'>
