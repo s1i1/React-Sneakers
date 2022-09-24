@@ -11,7 +11,6 @@ const FavoritePage = ({
     onDeleteFavorite,
     onFavorite
 }) => {
-    console.log(productData);
     return (
         productData.length == 0 ?
             <FavoriteEmpty /> :
