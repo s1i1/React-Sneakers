@@ -64,7 +64,7 @@ function App() {
     favoriteItems.map((item, index) => {
       if (item.product.includes(path)) {
         axios.delete(`https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite/${item.id}`);
-        setFavoriteItems(favoriteItems.filter((arr, i) => cardItems[i] !== cardItems[index]));
+        setFavoriteItems(favoriteItems.filter((arr, i) => favoriteItems[i] !== favoriteItems[index]));
       }
     });
   }
