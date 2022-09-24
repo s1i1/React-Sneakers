@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Favorite.module.scss';
 
 const FavoriteEmpty = () => {
@@ -15,14 +16,14 @@ const FavoriteEmpty = () => {
                     Вы ничего не добавляли в закладки
                 </div>
             </div>
-            <button className={styles.empty__button}>
+            <Link to="/" className={styles.empty__button}>
                 <div className={styles.empty__button_image}>
                     <img src='./img/main/basket/arrow-left.svg' alt='arrow-left' />
                 </div>
                 <div className={styles.empty__button_text}>
                     <p>Вернуться назад</p>
                 </div>
-            </button>
+            </Link>
         </div>
     )
 }
