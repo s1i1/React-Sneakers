@@ -150,7 +150,15 @@ function App() {
                 onFavorite={(obj) => onAddToFavorite(obj)}
               />
             } />
-            <Route path="/purchases" element={<PurchasesPage />} />
+            <Route path="/purchases" element={<PurchasesPage
+              cardItems={cardItems}
+              favoriteItems={favoriteItems}
+              productData={favoriteData}
+              onPlus={(obj) => onAddToCart(obj)}
+              onDelete={handlerClickDeleteCard}
+              onDeleteFavorite={handlerClickDeleteFavorite}
+              onFavorite={(obj) => onAddToFavorite(obj)}
+            />} />
           </Routes>
         </div>
       </main>
