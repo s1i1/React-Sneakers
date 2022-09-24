@@ -10,6 +10,7 @@ const Basket = ({
     setTax,
     onClickCloseOverlay,
     onClickDeleteCard,
+    onPurchase,
     items = []
 }) => {
     return (
@@ -39,6 +40,7 @@ const Basket = ({
                         tax={tax}
                         setTax={setTax}
                         onClickDeleteCard={onClickDeleteCard}
+                        onPurchase={onPurchase}
                         items={items}
                     />
                 }

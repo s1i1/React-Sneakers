@@ -12,6 +12,8 @@ import calculateTotal from "./components/Basket/calculateTotal";
 function App() {
   const [productData, setProductData] = React.useState([]);
   const [favoriteData, setFavoriteData] = React.useState([]);
+  const [purchasesData, setPurchasesData] = React.useState([]);
+  const [purchasesHistory, setPurchasesHistory] = React.useState([]);
   const [searchItems, setSearchItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
   const [visibleBasket, setVisibleBasket] = React.useState(false);
@@ -100,6 +102,17 @@ function App() {
     axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/favorite", obj);
   };
 
+  const onPurchase = (obj) => {
+    setPurchasesData((prev) => [...prev, ...obj]);
+  };
+
+  React.useEffect(() => {
+    let jsonData = new Set(purchasesData.map(item => JSON.stringify(item)));
+    let arrData = Array.from(jsonData).map(item => JSON.parse(item));
+
+    setPurchasesHistory(arrData)
+  }, [purchasesData]);
+
   const onChangeSearch = (e) => {
     setSearchValue(e.target.value);
     setSearchItems(productData.filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase())));
@@ -115,6 +128,7 @@ function App() {
         items={cardItems}
         onClickCloseOverlay={handlerBasketClick}
         onClickDeleteCard={handlerClickDeleteCard}
+        onPurchase={(obj) => onPurchase(obj)}
       />}
       <header>
         <Header
@@ -150,15 +164,16 @@ function App() {
                 onFavorite={(obj) => onAddToFavorite(obj)}
               />
             } />
-            <Route path="/purchases" element={<PurchasesPage
-              cardItems={cardItems}
-              favoriteItems={favoriteItems}
-              productData={favoriteData}
-              onPlus={(obj) => onAddToCart(obj)}
-              onDelete={handlerClickDeleteCard}
-              onDeleteFavorite={handlerClickDeleteFavorite}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-            />} />
+            <Route path="/purchases" element={
+              <PurchasesPage
+                cardItems={cardItems}
+                favoriteItems={favoriteItems}
+                productData={purchasesHistory}
+                onPlus={(obj) => onAddToCart(obj)}
+                onDelete={handlerClickDeleteCard}
+                onDeleteFavorite={handlerClickDeleteFavorite}
+                onFavorite={(obj) => onAddToFavorite(obj)}
+              />} />
           </Routes>
         </div>
       </main>

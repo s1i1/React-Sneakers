@@ -9,8 +9,21 @@ const BasketWithProduct = ({
     tax,
     setTax,
     onClickDeleteCard,
+    onPurchase,
     items
 }) => {
+
+    const handlerPurchase = () => {
+        let obj = [...items].map(item => {
+            let product = item.product;
+            let desc = item.desc;
+            let price = item.price;
+
+            return { product, desc, price }
+        });
+        onPurchase(obj);
+    };
+
     return (
         <>
             <div className={styles.basket__cards}>
@@ -31,14 +44,18 @@ const BasketWithProduct = ({
                 tax={tax}
                 setTax={setTax}
                 productData={items} />
-            <div className={styles.basket__button}>
+
+            <button
+                className={styles.basket__button}
+                onClick={handlerPurchase}
+            >
                 <div className={styles.basket__button_text}>
                     Оформить заказ
                 </div>
                 <div className={styles.basket__button_image}>
                     <img src="img/main/basket/arrow.svg" alt="arrow" />
                 </div>
-            </div>
+            </button>
         </>
     )
 }
