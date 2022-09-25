@@ -155,7 +155,7 @@ function App() {
   };
 
   return (
-    <AppContext.Provider>
+    <AppContext.Provider value={{ total }}>
       <div className="wrapper">
         {visibleBasket && <Basket
           total={total}
@@ -169,7 +169,6 @@ function App() {
         />}
         <header>
           <Header
-            total={total}
             onClickBasket={handlerBasketClick}
           />
         </header>

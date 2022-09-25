@@ -1,8 +1,11 @@
 import React from 'react';
-import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
+import AppContext from '../../AppContext';
+import styles from './Header.module.scss';
 
-const Header = ({ total, onClickBasket }) => {
+const Header = ({ onClickBasket }) => {
+    const { total } = React.useContext(AppContext);
+
     return (
         <div className={styles.header}>
             <Link to="/" className={styles.logo}>
