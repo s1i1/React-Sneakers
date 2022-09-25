@@ -16,7 +16,7 @@ const Favorite = ({
         <>
             <div className={styles.header}>
                 <Link to="/" className={styles.header__image}>
-                    <img src='./img/main/favorite/get-back-arrow.svg' alt='get-back-arrow' />
+                    <img src='img/main/favorite/get-back-arrow.svg' alt='get-back-arrow' />
                 </Link>
                 <h1>Мои закладки</h1>
             </div>

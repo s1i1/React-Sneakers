@@ -5,7 +5,7 @@ const BasketEmpty = ({ onClickCloseOverlay }) => {
     return (
         <div className={styles.empty}>
             <div className={styles.empty__image}>
-                <img width={'120px'} height={'120px'} src='./img/main/basket/box.png' alt='box' />
+                <img width={'120px'} height={'120px'} src='img/main/basket/box.png' alt='box' />
             </div>
             <div className={styles.empty__header}>
                 <h2 className={styles.empty__header_title}>
@@ -21,7 +21,7 @@ const BasketEmpty = ({ onClickCloseOverlay }) => {
                 onClick={onClickCloseOverlay}
             >
                 <div>
-                    <img width={'14px'} height={'12px'} src='./img/main/basket/arrow-left.svg' alt='arrow' />
+                    <img width={'14px'} height={'12px'} src='img/main/basket/arrow-left.svg' alt='arrow' />
                     <p>Вернуться назад</p>
                 </div>
             </button>

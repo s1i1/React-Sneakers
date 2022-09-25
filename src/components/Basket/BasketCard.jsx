@@ -24,7 +24,7 @@ const BasketCard = ({ product, desc, price, onClickDeleteCard }) => {
                 <button
                     className={styles.selected__product_delete}
                     onClick={handlerClickDeleteCard}>
-                    <img src="/img/main/basket/delete_button.svg" alt="delete_button" />
+                    <img src="img/main/basket/delete_button.svg" alt="delete_button" />
                 </button>
             </div>
         </div>

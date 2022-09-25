@@ -7,7 +7,7 @@ const ContentTop = ({ handlerClickSearchDelete, onChangeSearch, searchValue }) =
             <h1>Все кроссовки</h1>
             <div className={styles.search}>
                 <div className={styles.search__icon}>
-                    <img width={'14px'} height={'14px'} src="./img/main/search/search.svg" alt="search" />
+                    <img width={'14px'} height={'14px'} src="img/main/search/search.svg" alt="search" />
                 </div>
                 <input
                     onChange={onChangeSearch}
@@ -18,7 +18,7 @@ const ContentTop = ({ handlerClickSearchDelete, onChangeSearch, searchValue }) =
                     onClick={handlerClickSearchDelete}
                 >
                     <img width={'20px'} height={'20px'}
-                        src='./img/main/basket/delete_button.svg' alt='delete_button' />
+                        src='img/main/basket/delete_button.svg' alt='delete_button' />
                 </button>}
             </div>
         </div>
