@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppContext from '../../AppContext';
 import styles from './Purchases.module.scss';
 import ContentCards from '../ContentCards';
 
 const Purchases = ({
-    cardItems,
     favoriteItems,
-    productData,
     onPlus,
     onDelete,
     onDeleteFavorite,
     onFavorite
 }) => {
+    const { purchasesHistory } = React.useContext(AppContext);
+
     return (
         <>
             <div className={styles.header}>
@@ -22,8 +23,7 @@ const Purchases = ({
             </div>
             <div className='content__cards'>
                 <ContentCards
-                    cardItems={cardItems}
-                    productData={productData}
+                    productData={purchasesHistory}
                     favoriteItems={favoriteItems}
                     onPlus={onPlus}
                     onDelete={onDelete}

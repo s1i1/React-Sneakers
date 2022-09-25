@@ -155,7 +155,7 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ cardItems, total, setTotal, tax, setTax }}>
+    <AppContext.Provider value={{ purchasesHistory, cardItems, total, setTotal, tax, setTax }}>
       <div className="wrapper">
         {visibleBasket && <Basket
           onClickCloseOverlay={handlerBasketClick}
@@ -198,9 +198,7 @@ function App() {
               } />
               <Route path="/purchases" element={
                 <PurchasesPage
-                  cardItems={cardItems}
                   favoriteItems={favoriteItems}
-                  productData={purchasesHistory}
                   onPlus={(obj) => onAddToCart(obj)}
                   onDelete={handlerClickDeleteCard}
                   onDeleteFavorite={handlerClickDeleteFavorite}

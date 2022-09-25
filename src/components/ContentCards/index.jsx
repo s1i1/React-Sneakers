@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import AppContext from '../../AppContext';
 import Card from './Card';
 import styles from "./ContentCards.module.scss";
 import EmptyCard from './EmptyCard';
 
 const ContentCards = ({
-    cardItems,
     productData,
     favoriteItems,
     onPlus,
@@ -13,6 +13,8 @@ const ContentCards = ({
     onFavorite,
     isLoading
 }) => {
+    const { cardItems } = React.useContext(AppContext);
+
     return (
         <div className={styles.cards}>
             {isLoading ?

@@ -1,23 +1,22 @@
 import React from 'react';
+import AppContext from '../AppContext';
 import PurchasesEmpty from '../components/Purchases/PurchasesEmpty';
 import Purchases from '../components/Purchases';
 
 const PurchasesPage = ({
-    cardItems,
     favoriteItems,
-    productData,
     onPlus,
     onDelete,
     onDeleteFavorite,
     onFavorite
 }) => {
+    const { purchasesHistory } = React.useContext(AppContext);
+
     return (
-        productData.length == 0 ?
+        !purchasesHistory.length ?
             <PurchasesEmpty /> :
             <Purchases
-                cardItems={cardItems}
                 favoriteItems={favoriteItems}
-                productData={productData}
                 onPlus={onPlus}
                 onDelete={onDelete}
                 onDeleteFavorite={onDeleteFavorite}
