@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
+import AppContext from "./AppContext";
 import axios from "axios";
 import HomePage from './pages/HomePage';
 import FavoritePage from './pages/FavoritePage';
@@ -154,66 +155,68 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
-      {visibleBasket && <Basket
-        total={total}
-        setTotal={setTotal}
-        tax={tax}
-        setTax={setTax}
-        items={cardItems}
-        onClickCloseOverlay={handlerBasketClick}
-        onClickDeleteCard={handlerClickDeleteCard}
-        onPurchase={(obj) => onPurchase(obj)}
-      />}
-      <header>
-        <Header
+    <AppContext.Provider>
+      <div className="wrapper">
+        {visibleBasket && <Basket
           total={total}
-          onClickBasket={handlerBasketClick}
-        />
-      </header>
-      <main>
-        <div className="content">
-          <Routes>
-            <Route path="/" element={
-              <HomePage
-                handlerClickSearchDelete={handlerClickSearchDelete}
-                onChangeSearch={onChangeSearch}
-                searchValue={searchValue}
-                cardItems={cardItems}
-                productData={searchItems}
-                favoriteItems={favoriteItems}
-                onPlus={(obj) => onAddToCart(obj)}
-                onDelete={handlerClickDeleteCard}
-                onDeleteFavorite={handlerClickDeleteFavorite}
-                onFavorite={(obj) => onAddToFavorite(obj)}
-                isLoading={isLoading}
-              />
-            } />
-            <Route path="/favorite" element={
-              <FavoritePage
-                cardItems={cardItems}
-                favoriteItems={favoriteItems}
-                productData={favoriteData}
-                onPlus={(obj) => onAddToCart(obj)}
-                onDelete={handlerClickDeleteCard}
-                onDeleteFavorite={handlerClickDeleteFavorite}
-                onFavorite={(obj) => onAddToFavorite(obj)}
-              />
-            } />
-            <Route path="/purchases" element={
-              <PurchasesPage
-                cardItems={cardItems}
-                favoriteItems={favoriteItems}
-                productData={purchasesHistory}
-                onPlus={(obj) => onAddToCart(obj)}
-                onDelete={handlerClickDeleteCard}
-                onDeleteFavorite={handlerClickDeleteFavorite}
-                onFavorite={(obj) => onAddToFavorite(obj)}
-              />} />
-          </Routes>
-        </div>
-      </main>
-    </div>
+          setTotal={setTotal}
+          tax={tax}
+          setTax={setTax}
+          items={cardItems}
+          onClickCloseOverlay={handlerBasketClick}
+          onClickDeleteCard={handlerClickDeleteCard}
+          onPurchase={(obj) => onPurchase(obj)}
+        />}
+        <header>
+          <Header
+            total={total}
+            onClickBasket={handlerBasketClick}
+          />
+        </header>
+        <main>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={
+                <HomePage
+                  handlerClickSearchDelete={handlerClickSearchDelete}
+                  onChangeSearch={onChangeSearch}
+                  searchValue={searchValue}
+                  cardItems={cardItems}
+                  productData={searchItems}
+                  favoriteItems={favoriteItems}
+                  onPlus={(obj) => onAddToCart(obj)}
+                  onDelete={handlerClickDeleteCard}
+                  onDeleteFavorite={handlerClickDeleteFavorite}
+                  onFavorite={(obj) => onAddToFavorite(obj)}
+                  isLoading={isLoading}
+                />
+              } />
+              <Route path="/favorite" element={
+                <FavoritePage
+                  cardItems={cardItems}
+                  favoriteItems={favoriteItems}
+                  productData={favoriteData}
+                  onPlus={(obj) => onAddToCart(obj)}
+                  onDelete={handlerClickDeleteCard}
+                  onDeleteFavorite={handlerClickDeleteFavorite}
+                  onFavorite={(obj) => onAddToFavorite(obj)}
+                />
+              } />
+              <Route path="/purchases" element={
+                <PurchasesPage
+                  cardItems={cardItems}
+                  favoriteItems={favoriteItems}
+                  productData={purchasesHistory}
+                  onPlus={(obj) => onAddToCart(obj)}
+                  onDelete={handlerClickDeleteCard}
+                  onDeleteFavorite={handlerClickDeleteFavorite}
+                  onFavorite={(obj) => onAddToFavorite(obj)}
+                />} />
+            </Routes>
+          </div>
+        </main>
+      </div>
+    </AppContext.Provider>
   );
 }
 
