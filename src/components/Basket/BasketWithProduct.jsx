@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
+import AppContext from '../../AppContext';
 import BasketCard from "./BasketCard";
 import BasketTotal from "./BasketTotal";
 import styles from './Basket.module.scss';
 
-const BasketWithProduct = ({
-    onClickDeleteCard,
-    onPurchase,
-    items
-}) => {
+const BasketWithProduct = ({ onClickDeleteCard, onPurchase, }) => {
+
+    const { cardItems } = React.useContext(AppContext);
 
     const handlerPurchase = () => {
-        let obj = [...items].map(item => {
+        let obj = [...cardItems].map(item => {
             let product = item.product;
             let desc = item.desc;
             let price = item.price;
@@ -23,7 +22,7 @@ const BasketWithProduct = ({
     return (
         <>
             <div className={styles.basket__cards}>
-                {items.map((item) => {
+                {cardItems.map((item) => {
                     return (
                         <BasketCard
                             key={item.product}
@@ -34,8 +33,7 @@ const BasketWithProduct = ({
                         />)
                 })}
             </div>
-            <BasketTotal
-                productData={items} />
+            <BasketTotal />
 
             <button
                 className={styles.basket__button}

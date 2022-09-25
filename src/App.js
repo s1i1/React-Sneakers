@@ -155,10 +155,9 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ total, setTotal, tax, setTax }}>
+    <AppContext.Provider value={{ cardItems, total, setTotal, tax, setTax }}>
       <div className="wrapper">
         {visibleBasket && <Basket
-          items={cardItems}
           onClickCloseOverlay={handlerBasketClick}
           onClickDeleteCard={handlerClickDeleteCard}
           onPurchase={(obj) => onPurchase(obj)}

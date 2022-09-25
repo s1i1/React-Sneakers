@@ -1,14 +1,12 @@
 import React from 'react';
+import AppContext from '../../AppContext';
 import BasketEmpty from './BasketEmpty';
 import BasketWithProduct from './BasketWithProduct';
 import styles from './Basket.module.scss';
 
-const Basket = ({
-    onClickCloseOverlay,
-    onClickDeleteCard,
-    onPurchase,
-    items = []
-}) => {
+const Basket = ({ onClickCloseOverlay, onClickDeleteCard, onPurchase }) => {
+    const { cardItems } = React.useContext(AppContext);
+
     return (
         <div>
             <div
@@ -27,13 +25,12 @@ const Basket = ({
                         </svg>
                     </button>
                 </div>
-                {items.length == 0 ?
+                {!cardItems.length ?
                     <BasketEmpty onClickCloseOverlay={onClickCloseOverlay} />
                     :
                     <BasketWithProduct
                         onClickDeleteCard={onClickDeleteCard}
                         onPurchase={onPurchase}
-                        items={items}
                     />
                 }
             </div>
