@@ -12,7 +12,8 @@ const HomePage = ({
     onPlus,
     onDelete,
     onDeleteFavorite,
-    onFavorite
+    onFavorite,
+    isLoading
 }) => {
 
     return (
@@ -30,6 +31,7 @@ const HomePage = ({
                 onDelete={onDelete}
                 onDeleteFavorite={onDeleteFavorite}
                 onFavorite={onFavorite}
+                isLoading={isLoading}
             />
         </>
     )

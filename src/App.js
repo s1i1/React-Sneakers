@@ -21,15 +21,20 @@ function App() {
   const [favoriteItems, setFavoriteItems] = React.useState([]);
   const [total, setTotal] = React.useState(0);
   const [tax, setTax] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   setOverflow(visibleBasket);
 
   React.useEffect(() => {
     async function getData() {
       try {
+        setIsLoading(true);
+
         let resp = await axios.get("https://63234cd3362b0d4e7de0f3ee.mockapi.io/items");
         setProductData(resp.data);
         setSearchItems(resp.data);
+
+        setIsLoading(false);
       } catch (err) {
         alert('Не удалось загрузить items')
       }
@@ -181,6 +186,7 @@ function App() {
                 onDelete={handlerClickDeleteCard}
                 onDeleteFavorite={handlerClickDeleteFavorite}
                 onFavorite={(obj) => onAddToFavorite(obj)}
+                isLoading={isLoading}
               />
             } />
             <Route path="/favorite" element={
