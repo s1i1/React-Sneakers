@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import HomePage from './pages/HomePage';
 import FavoritePage from './pages/FavoritePage';
@@ -63,7 +63,25 @@ function App() {
 
   React.useEffect(() => {
     calculateTotal(cardItems, total, setTotal, tax, setTax);
-  }, [cardItems])
+  }, [cardItems]);
+
+  React.useEffect(() => {
+    let jsonData = new Set(purchasesData.map(item => JSON.stringify(item)));
+    let arrData = Array.from(jsonData).map(item => JSON.parse(item));
+
+    if (arrData.length > 0) {
+      setPurchasesHistory(arrData);
+
+      arrData.forEach(item => {
+        try {
+          console.log('Отправляется obj в purchases');
+          axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/purchases", item);
+        } catch (err) {
+          alert('purchases не отправлен')
+        }
+      });
+    }
+  }, [purchasesData]);
 
   const handlerBasketClick = () => {
     setVisibleBasket((prev) => !prev);
@@ -129,24 +147,6 @@ function App() {
   const onPurchase = (obj) => {
     setPurchasesData((prev) => [...prev, ...obj]);
   };
-
-  React.useEffect(() => {
-    let jsonData = new Set(purchasesData.map(item => JSON.stringify(item)));
-    let arrData = Array.from(jsonData).map(item => JSON.parse(item));
-
-    if (arrData.length > 0) {
-      setPurchasesHistory(arrData);
-
-      arrData.forEach(item => {
-        try {
-          console.log('Отправляется obj в purchases');
-          axios.post("https://63234cd3362b0d4e7de0f3ee.mockapi.io/purchases", item);
-        } catch (err) {
-          alert('purchases не отправлен')
-        }
-      });
-    }
-  }, [purchasesData]);
 
   const onChangeSearch = (e) => {
     setSearchValue(e.target.value);
