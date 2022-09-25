@@ -4,8 +4,6 @@ import BasketTotal from "./BasketTotal";
 import styles from './Basket.module.scss';
 
 const BasketWithProduct = ({
-    total,
-    setTotal,
     tax,
     setTax,
     onClickDeleteCard,
@@ -39,8 +37,6 @@ const BasketWithProduct = ({
                 })}
             </div>
             <BasketTotal
-                total={total}
-                setTotal={setTotal}
                 tax={tax}
                 setTax={setTax}
                 productData={items} />

@@ -155,11 +155,9 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ total }}>
+    <AppContext.Provider value={{ total, setTotal }}>
       <div className="wrapper">
         {visibleBasket && <Basket
-          total={total}
-          setTotal={setTotal}
           tax={tax}
           setTax={setTax}
           items={cardItems}

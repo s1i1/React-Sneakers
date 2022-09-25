@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import AppContext from '../../AppContext';
 import styles from './Basket.module.scss';
 import calculateTotal from './calculateTotal';
 
-const BasketTotal = ({ total, setTotal, tax, setTax, productData }) => {
+const BasketTotal = ({ tax, setTax, productData }) => {
+    const { total, setTotal } = React.useContext(AppContext);
+
     React.useEffect(() => {
         calculateTotal(productData, total, setTotal, tax, setTax);
     }, [total, tax]);

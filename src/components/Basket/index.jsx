@@ -4,8 +4,6 @@ import BasketWithProduct from './BasketWithProduct';
 import styles from './Basket.module.scss';
 
 const Basket = ({
-    total,
-    setTotal,
     tax,
     setTax,
     onClickCloseOverlay,
@@ -35,8 +33,6 @@ const Basket = ({
                     <BasketEmpty onClickCloseOverlay={onClickCloseOverlay} />
                     :
                     <BasketWithProduct
-                        total={total}
-                        setTotal={setTotal}
                         tax={tax}
                         setTax={setTax}
                         onClickDeleteCard={onClickDeleteCard}
